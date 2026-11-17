@@ -39,11 +39,4 @@ resource "helm_release" "this" {
     name  = "enableWafv2"
     value = "false"
   }
-
-  depends_on = [terraform_data.nodes_ready]
-}
-
-# El controller necesita nodos donde correr.
-resource "terraform_data" "nodes_ready" {
-  input = var.node_group_id
 }

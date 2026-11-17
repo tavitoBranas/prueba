@@ -12,8 +12,3 @@ variable "vpc_id" {
   description = "ID de la VPC del cluster"
   type        = string
 }
-
-variable "node_group_id" {
-  description = "ID del node group (el controller se instala cuando hay nodos)"
-  type        = string
-}

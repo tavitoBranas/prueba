@@ -17,7 +17,6 @@ env:
   EKS_CLUSTER: demo-eks
   K8S_NAMESPACE: web-app
   K8S_DEPLOYMENT: web-app
-  CONTAINER_NAME: web-app
 
 jobs:
   # ──────────────────────────────────────────────
@@ -59,11 +58,9 @@ jobs:
             --label "git.branch=${{ github.ref_name }}" \
             --label "build.date=$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
             -t "$IMAGE_URI" \
-            -t "$REGISTRY/$ECR_REPO:latest" \
             ./app
 
           docker push "$IMAGE_URI"
-          docker push "$REGISTRY/$ECR_REPO:latest"
 
           # Exportar URI de imagen para el siguiente job
           echo "image_uri=$IMAGE_URI" >> $GITHUB_OUTPUT

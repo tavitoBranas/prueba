@@ -35,22 +35,19 @@ variable "instance_types" {
 }
 
 variable "node_desired_size" {
-  type    = number
-  default = 2
+  description = "Cantidad deseada de nodos"
+  type        = number
+  default     = 2
 }
 
 variable "node_min_size" {
-  type    = number
-  default = 1
+  description = "Cantidad mínima de nodos"
+  type        = number
+  default     = 1
 }
 
 variable "node_max_size" {
-  type    = number
-  default = 3
-}
-
-variable "network_dependencies" {
-  description = "IDs de recursos de red que deben existir antes que los nodos"
-  type        = list(string)
-  default     = []
+  description = "Cantidad máxima de nodos"
+  type        = number
+  default     = 3
 }

@@ -56,13 +56,4 @@ resource "aws_eks_node_group" "this" {
   tags = {
     Name = var.node_group_name
   }
-
-  # Las rutas a internet deben existir antes de que los nodos intenten unirse
-  # al cluster, y seguir existiendo mientras se destruyen.
-  depends_on = [terraform_data.network_ready]
-}
-
-# Ancla para propagar la dependencia sobre las rutas del modulo networking.
-resource "terraform_data" "network_ready" {
-  input = var.network_dependencies
 }

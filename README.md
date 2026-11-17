@@ -165,7 +165,7 @@ kubectl get nodes
 El workflow **App CI/CD** se dispara con cada push a `main` que modifique `app/` o `k8s/`, o manualmente desde **Actions → App CI/CD → Run workflow**. Ejecuta dos jobs en secuencia:
 
 ```
-[1] build-and-push → Construye la imagen y la sube a ECR con tags :<git-sha> y :latest
+[1] build-and-push → Construye la imagen y la sube a ECR con tag :<git-sha>
 [2] deploy         → update-kubeconfig, reemplaza ${IMAGE_URI} en k8s/*.yaml,
                      kubectl apply y espera el rollout
 ```
@@ -265,6 +265,7 @@ Borrar primero el Ingress para que el controller elimine el ALB; si no, `terrafo
 
 ```bash
 kubectl delete namespace web-app   # borra Ingress → el controller elimina el ALB
+kubectl delete -f demo/ --ignore-not-found   # si se aplicó la demo manual
 # esperar ~1 min a que el ALB desaparezca
 
 cd infra
