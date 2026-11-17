@@ -13,7 +13,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket  = "vmsilvamolina-state"
+    bucket  = "vmsilvamolina-tf-state"
     key     = "eks-demo/terraform.tfstate"
     region  = "us-east-1"
     encrypt = true
