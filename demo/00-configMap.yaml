@@ -1,0 +1,171 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-config
+  namespace: default
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>DevOps cambió mi vida 🎉</title>
+      <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+          font-family: 'Segoe UI', sans-serif;
+          background: #0a0a1a;
+          color: #fff;
+          min-height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+        }
+
+        .container {
+          text-align: center;
+          padding: 2rem;
+          max-width: 720px;
+          position: relative;
+          z-index: 10;
+        }
+
+        .emoji-big {
+          font-size: 5rem;
+          display: block;
+          margin-bottom: 1rem;
+          animation: bounce 1.2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+          0%, 100% { transform: translateY(0); }
+          50%       { transform: translateY(-18px); }
+        }
+
+        h1 {
+          font-size: 2.4rem;
+          font-weight: 800;
+          background: linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          margin-bottom: 1.8rem;
+          line-height: 1.2;
+          animation: pulse 2.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+          0%, 100% { transform: scale(1); }
+          50%       { transform: scale(1.03); }
+        }
+
+        .joke {
+          font-size: 1.05rem;
+          color: #ccc;
+          margin: 0.7rem 0;
+          line-height: 1.7;
+        }
+
+        .joke strong {
+          color: #feca57;
+        }
+
+        .divider {
+          border: none;
+          border-top: 1px solid #2a2a4a;
+          margin: 1.8rem auto;
+          width: 60%;
+        }
+
+        .footnote {
+          font-size: 0.85rem;
+          color: #555;
+          margin-top: 0.4rem;
+        }
+
+        .tags {
+          margin-top: 2rem;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 0.5rem;
+        }
+
+        .tag {
+          background: #12122a;
+          border: 1px solid #48dbfb44;
+          color: #48dbfb;
+          padding: 0.35rem 0.9rem;
+          border-radius: 20px;
+          font-size: 0.8rem;
+          font-family: monospace;
+          letter-spacing: 0.5px;
+        }
+
+        .confetti {
+          position: fixed;
+          top: -12px;
+          border-radius: 2px;
+          animation: fall linear infinite;
+          z-index: 1;
+          opacity: 0.9;
+        }
+
+        @keyframes fall {
+          0%   { top: -12px; transform: rotate(0deg) translateX(0); opacity: 1; }
+          85%  { opacity: 0.8; }
+          100% { top: 108vh; transform: rotate(800deg) translateX(90px); opacity: 0; }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <span class="emoji-big">🥳</span>
+
+        <h1>DevOps fue lo mejor<br>que me pasó en la vida!!</h1>
+
+        <p class="joke">
+          <strong>Antes de DevOps:</strong> el deploy era un ritual pagano.<br>
+          Velas, rezar y SSH directo en producción.
+        </p>
+        <p class="joke">
+          <strong>Después de DevOps:</strong> el deploy sigue dando miedo,<br>
+          pero ahora tiene pipelines, terraform, manifiestos y alguien a quien culpar.
+        </p>
+
+        <hr class="divider">
+
+        <p class="joke">
+          Esta app corre en <strong>EKS sobre Kubernetes</strong>.<br>
+          Si la estás viendo, significa que le gané a YAML. 🏆
+        </p>
+        <p class="footnote">* El 87% de mi tiempo fue debuggear indentación.</p>
+
+        <div class="tags">
+          <span class="tag">kubectl get happiness → Running ✅</span>
+          <span class="tag">replicas: suficientes</span>
+          <span class="tag">uptime: siempre*</span>
+          <span class="tag">* excepto cuando toco algo</span>
+        </div>
+      </div>
+
+      <script>
+        const colors = ['#ff6b6b','#feca57','#48dbfb','#ff9ff3','#54a0ff','#5f27cd','#ff9f43','#1dd1a1'];
+        for (let i = 0; i < 140; i++) {
+          const el = document.createElement('div');
+          el.className = 'confetti';
+          el.style.left            = Math.random() * 100 + 'vw';
+          el.style.width           = (Math.random() * 7 + 5) + 'px';
+          el.style.height          = (Math.random() * 10 + 6) + 'px';
+          el.style.background      = colors[Math.floor(Math.random() * colors.length)];
+          el.style.animationDuration = (Math.random() * 4 + 2.5) + 's';
+          el.style.animationDelay  = (Math.random() * 6) + 's';
+          el.style.borderRadius    = Math.random() > 0.4 ? '50%' : '2px';
+          document.body.appendChild(el);
+        }
+      </script>
+    </body>
+    </html>
